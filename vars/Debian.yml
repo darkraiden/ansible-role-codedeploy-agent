@@ -1,0 +1,8 @@
+---
+
+__codedeploy_agent_packages:
+  - git
+  - wget
+
+__codedeploy_agent_ruby_package_ubuntu_14_04: ruby2.0
+__codedeploy_agent_ruby_package: ruby

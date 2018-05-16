@@ -1,0 +1,17 @@
+---
+
+- name: Ensure the EPEL repo is installed
+  yum:
+    name: epel-release
+    state: present
+
+- name: Install packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ codedeploy_agent_packages }}"
+
+- name: Check if Codedeploy agent is already installed
+  command: rpm -q 'codedeploy-agent'
+  ignore_errors: true
+  register: is_codedeploy_installed

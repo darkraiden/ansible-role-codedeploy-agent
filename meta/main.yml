@@ -1,0 +1,30 @@
+galaxy_info:
+  author: Davide Di Mauro
+  description: Ansible Role to provision the AWS Codedeploy Agent
+
+  license: MIT
+
+  min_ansible_version: 1.6
+
+  platforms:
+  # Platforms the Role has been tested on
+  # It may work on non-listed OS's
+  # I guess the only way to find out is to give it a try :)
+    - name: CentOS
+      versions:
+        - 7
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+    - name: Debian
+      versions:
+        - jessie
+
+  galaxy_tags:
+    - codedeploy
+    - codedeploy-agent
+    - aws
+    - agent
+
+dependencies: []

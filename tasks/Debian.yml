@@ -1,0 +1,37 @@
+---
+
+- name: Define codedeploy_agent_ruby_packages
+  set_fact:
+    codedeploy_agent_ruby_package: "{{ __codedeploy_agent_ruby_package_ubuntu_14_04 }}"
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_version == "14.04")
+
+- name: Define codedeploy_agent_ruby_packages for any Debian version
+  set_fact:
+    codedeploy_agent_ruby_package: "{{ __codedeploy_agent_ruby_package }}"
+  when: ansible_distribution_version != "14.04"
+
+- name: Install Packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items:
+    - "{{ codedeploy_agent_packages }}"
+
+- name: Install Ruby
+  apt:
+    name: "{{ codedeploy_agent_ruby_package }}"
+    state: present
+    update_cache: false
+
+- name: Set ruby alternative
+  alternatives:
+    name: ruby
+    link: /usr/bin/ruby
+    path: /usr/bin/ruby2.0
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_version == "14.04")
+
+- name: "Check if CodeDeploy is already installed"
+  command: dpkg-query -W 'codedeploy-agent'
+  register: is_codedeploy_installed
+  ignore_errors: true

@@ -1,0 +1,5 @@
+---
+
+codedeploy_agent_s3_download_bucket_name: ""
+
+codedeploy_agent_version: latest

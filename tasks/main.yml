@@ -1,0 +1,40 @@
+---
+
+- name: Load OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Load Shared variables
+  include_vars: "main.yml"
+
+- name: Define codedeploy_agent_packages
+  set_fact:
+    codedeploy_agent_packages: "{{ __codedeploy_agent_packages | list }}"
+  when: codedeploy_agent_packages is not defined
+
+- name: Define codedeploy_agent_s3_download_url
+  set_fact:
+    codedeploy_agent_s3_download_url: "{{ __codedeploy_agent_s3_download_url }}"
+  when: codedeploy_agent_s3_download_url is not defined
+
+- include: "{{ ansible_os_family }}.yml"
+
+- name: Get Codedeploy Agent installer from S3
+  get_url:
+    url: "{{ codedeploy_agent_s3_download_url }}"
+    dest: /tmp/codedeploy-agent
+  when: is_codedeploy_installed is failed
+
+- name: Add Executable permission to Codedeploy Agent Installer
+  file:
+    path: /tmp/codedeploy-agent
+    state: file
+    owner: root
+    group: root
+    mode: 0755
+  when: is_codedeploy_installed is failed
+
+- name: Install Codedeploy Agent
+  become: true
+  command: /tmp/codedeploy-agent auto
+  when: is_codedeploy_installed is failed
+  notify: restart the codedeploy agent
