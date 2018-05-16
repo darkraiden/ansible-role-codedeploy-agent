@@ -4,3 +4,5 @@
   become: True
   roles:
     - role_under_test
+  vars:
+    - codedeploy_agent_s3_download_bucket_name: aws-codedeploy-eu-west-1
