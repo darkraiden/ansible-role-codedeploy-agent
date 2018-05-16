@@ -14,4 +14,5 @@
 - name: Check if Codedeploy agent is already installed
   command: rpm -q 'codedeploy-agent'
   ignore_errors: true
+  changed_when: false
   register: is_codedeploy_installed
