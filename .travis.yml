@@ -2,19 +2,19 @@
 services: docker
 
 env:
-  - distro: geerlingguy/docker-centos7-ansible:latest
+  - image: geerlingguy/docker-centos7-ansible:latest
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distro: davidedimauro88/docker-ubuntu1404-ansible:latest
+  - image: davidedimauro88/docker-ubuntu1404-ansible:latest
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distro: geerlingguy/docker-ubuntu1604-ansible:latest
+  - image: geerlingguy/docker-ubuntu1604-ansible:latest
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distro: geerlingguy/docker-debian8-ansible:latest
+  - image: geerlingguy/docker-debian8-ansible:latest
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distro: geerlingguy/docker-debian9-ansible:latest
+  - image: geerlingguy/docker-debian9-ansible:latest
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
