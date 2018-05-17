@@ -5,9 +5,6 @@ env:
   - image: geerlingguy/docker-centos7-ansible:latest
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - image: davidedimauro88/docker-ubuntu1404-ansible:latest
-    init: /lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - image: geerlingguy/docker-ubuntu1604-ansible:latest
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
