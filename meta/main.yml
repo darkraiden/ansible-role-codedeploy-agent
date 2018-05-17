@@ -10,9 +10,9 @@ galaxy_info:
   # Platforms the Role has been tested on
   # It may work on non-listed OS's
   # I guess the only way to find out is to give it a try :)
-    - name: CentOS
+    - name: EL
       versions:
-        - 7
+        - all
     - name: Ubuntu
       versions:
         - trusty
@@ -23,7 +23,6 @@ galaxy_info:
 
   galaxy_tags:
     - codedeploy
-    - codedeploy-agent
     - aws
     - agent
 
