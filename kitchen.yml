@@ -8,7 +8,7 @@ provisioner:
   name: ansible_playbook
   hosts: test-kitchen
   ansible_verbose: false
-  ansible_vervbosity: 2
+  ansible_verbosity: 2
 
 platforms:
   - name: ubuntu-16.04
